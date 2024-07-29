@@ -8,7 +8,9 @@ model=pickle.load(open("model.pkl","rb"))
 @app.route("/")
 def hello_world():
     return render_template("index.html")
-
+@app.route("/home")
+def hello_world():
+    return render_template("index.html")
 @app.route("/about")
 def hello_world():
     return render_template("about.html")
