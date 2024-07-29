@@ -27,8 +27,7 @@ This project is a web application for predicting insurance prices based on vario
 1. **Clone the Repository**
 
    bash
-   git clone https://github.com/your-username/insurance-price-prediction.git
-   cd insurance-price-prediction
+   git clone insurance-price-prediction
    
 
 2. **Install Dependencies**
@@ -56,6 +55,7 @@ This project is a web application for predicting insurance prices based on vario
    df = pd.read_csv("insurance.csv")
 
    # Convert categorical columns to integers
+ ```
    df['sex'] = df['sex'].map({'male': 1, 'female': 0})
    df['smoker'] = df['smoker'].map({'yes': 1, 'no': 0})
    df['region'] = df['region'].map({
@@ -64,8 +64,9 @@ This project is a web application for predicting insurance prices based on vario
        'southeast': 3,
        'southwest': 4
    })
-
+```
    # Features and target
+```
    x = df.drop(columns='charges')
    y = df['charges']
 
@@ -76,17 +77,18 @@ This project is a web application for predicting insurance prices based on vario
    sc = StandardScaler()
    x_train = sc.fit_transform(x_train)
    x_test = sc.transform(x_test)
-
+```
    # Train Random Forest model
+ ```
    regressor_rf = RandomForestRegressor()
    regressor_rf.fit(x_train, y_train)
-
-   # Save the model
-   pickle.dump(regressor_rf, open("model.pkl", "wb"))
-   
+```
+ # Save the model
+pickle.dump(regressor_rf, open("model.pkl", "wb"))
+  
 
 4. **Run the Application**
-
+```
    Start the Flask application:
 
    bash
@@ -94,7 +96,7 @@ This project is a web application for predicting insurance prices based on vario
    
 
    Open your browser and go to `http://127.0.0.1:5000` to access the application.
-
+```
 ## Usage
 
 1. **Home Page**
