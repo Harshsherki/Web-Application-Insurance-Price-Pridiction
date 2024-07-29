@@ -11,6 +11,7 @@
         body {
             background-color: #000; /* Black background color */
             color: #fff; /* White text color */
+            padding-top: 56px; /* Padding to account for fixed navbar height */
         }
         .navbar {
             background-color: #002b36; /* Dark blue background for navbar */
@@ -31,6 +32,10 @@
             color: #fff; /* White text */
             border-color: #0056b3; /* Blue border color */
         }
+        .form-control::placeholder {
+            color: #ffffff; /* White placeholder text */
+            opacity: 1; /* Override default opacity */
+        }
         .form-check-label {
             color: #fff; /* White text for labels */
         }
@@ -46,7 +51,6 @@
             background-color: #0056b3; /* Match blue color for alerts */
             color: #fff; /* White text */
         }
-        
         .form-group label {
             color: #ffffff; /* White text for form labels */
         }
@@ -54,7 +58,7 @@
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <a class="navbar-brand" href="#">Insurance App</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -79,29 +83,12 @@
         <form action="/predict" method="post">
             <div class="form-group">
                 <label for="age">Age:</label>
-                <select class="form-control" id="age" name="age" required>
-                    <option value="" disabled selected>Select your age</option>
-                    <!-- Options from 0 to 100 for age -->
-                    <script>
-                        for (let i = 0; i <= 100; i++) {
-                            document.write(`<option value="${i}">${i}</option>`);
-                        }
-                    </script>
-                </select>
+                <input type="number" class="form-control" id="age" name="age" placeholder="Enter your age" required>
             </div>
 
             <div class="form-group">
                 <label for="bmi">BMI:</label>
-                <select class="form-control" id="bmi" name="bmi" required>
-                    <option value="" disabled selected>Select your BMI</option>
-                    <!-- Options from 10.0 to 50.0 for BMI with step 0.1 -->
-                    <script>
-                        for (let i = 100; i <= 500; i += 1) {
-                            let bmi = (i / 10).toFixed(1);
-                            document.write(`<option value="${bmi}">${bmi}</option>`);
-                        }
-                    </script>
-                </select>
+                <input type="number" step="0.01" class="form-control" id="bmi" name="bmi" placeholder="Enter your BMI" required>
             </div>
 
             <div class="form-group">
